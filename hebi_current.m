@@ -62,7 +62,8 @@ while toc(t0) < duration
         j = 1001;
     end
 
-    error = u_sim(j) - fbk.motorCurrent;
+    % u_sim(j) is the output of MPC
+    error = u_sim(j) - fbk.windingCurrent;
 
     pwm = kP .* error;
 
@@ -81,4 +82,4 @@ while toc(t0) < duration
 end
 
 log = group.stopLog();
-HebiUtils.plotLogs( log, 'motorCurrent' );
+HebiUtils.plotLogs( log, 'windingCurrent' );
